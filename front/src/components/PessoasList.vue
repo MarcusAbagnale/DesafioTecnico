@@ -7,7 +7,7 @@
 
     <v-data-table :items="filteredPessoas" :headers="headers" item-key="id">
       <template v-slot:item.actions="{ item }">
-        <v-btn @click="openEditDialog(item)"  class="mt-2 mr-2">&#128393;</v-btn>
+        <v-btn @click="openEditDialog(item)" class="mt-2 mr-2">&#128393;</v-btn>
         <v-btn @click="deletePessoa(item.id)" color="red" class="mt-2 mr-2">DEL</v-btn>
         <v-btn @click="openAddressModal(item)" color="blue" class="mt-2 mb-2">Ver Endereços</v-btn>
       </template>
@@ -19,13 +19,27 @@
           <span class="headline">Cadastrar Pessoa</span>
         </v-card-title>
         <v-card-text>
-          <v-text-field v-model="newPessoa.nome" label="Nome" :error-messages="errors.nome"></v-text-field>
-          <v-text-field v-model="newPessoa.nomeSocial" label="Nome Social" :error-messages="errors.nomeSocial"></v-text-field>
-          <v-text-field v-model="newPessoa.cpf" label="CPF" :error-messages="errors.cpf"></v-text-field>
-          <v-text-field v-model="newPessoa.nomeMae" label="Nome da Mãe" :error-messages="errors.nomeMae"></v-text-field>
-          <v-text-field v-model="newPessoa.nomePai" label="Nome do Pai" :error-messages="errors.nomePai"></v-text-field>
-          <v-text-field v-model="newPessoa.telefone" label="Telefone" :error-messages="errors.telefone"></v-text-field>
-          <v-text-field v-model="newPessoa.email" label="Email" :error-messages="errors.email"></v-text-field>
+          <v-text-field v-model="newPessoa.nome" label="Nome"
+            :rules="[v => !!v || 'Nome é obrigatório']"
+            :error-messages="errors.nome ? [errors.nome] : []"></v-text-field>
+          <v-text-field v-model="newPessoa.nomeSocial" label="Nome Social"
+            :rules="[v => !!v || 'Nome Social é obrigatório']"
+            :error-messages="errors.nomeSocial ? [errors.nomeSocial] : []"></v-text-field>
+          <v-text-field v-model="newPessoa.cpf" label="CPF"
+            :rules="[v => !!v || 'CPF é obrigatório']"
+            :error-messages="errors.cpf ? [errors.cpf] : []"></v-text-field>
+          <v-text-field v-model="newPessoa.nomeMae" label="Nome da Mãe"
+            :rules="[v => !!v || 'Nome da Mãe é obrigatório']"
+            :error-messages="errors.nomeMae ? [errors.nomeMae] : []"></v-text-field>
+          <v-text-field v-model="newPessoa.nomePai" label="Nome do Pai"
+            :rules="[v => !!v || 'Nome do Pai é obrigatório']"
+            :error-messages="errors.nomePai ? [errors.nomePai] : []"></v-text-field>
+          <v-text-field v-model="newPessoa.telefone" label="Telefone"
+            :rules="[v => !!v || 'Telefone é obrigatório']"
+            :error-messages="errors.telefone ? [errors.telefone] : []"></v-text-field>
+          <v-text-field v-model="newPessoa.email" label="Email"
+            :rules="[v => !!v || 'Email é obrigatório']"
+            :error-messages="errors.email ? [errors.email] : []"></v-text-field>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -41,13 +55,27 @@
           <span class="headline">Editar Cadastro de Pessoa</span>
         </v-card-title>
         <v-card-text>
-          <v-text-field v-model="editedPessoa.nome" label="Nome" :error-messages="errors.nome"></v-text-field>
-          <v-text-field v-model="editedPessoa.nomeSocial" label="Nome Social" :error-messages="errors.nomeSocial"></v-text-field>
-          <v-text-field v-model="editedPessoa.cpf" label="CPF" :error-messages="errors.cpf"></v-text-field>
-          <v-text-field v-model="editedPessoa.nomeMae" label="Nome da Mãe" :error-messages="errors.nomeMae"></v-text-field>
-          <v-text-field v-model="editedPessoa.nomePai" label="Nome do Pai" :error-messages="errors.nomePai"></v-text-field>
-          <v-text-field v-model="editedPessoa.telefone" label="Telefone" :error-messages="errors.telefone"></v-text-field>
-          <v-text-field v-model="editedPessoa.email" label="Email" :error-messages="errors.email"></v-text-field>
+          <v-text-field v-model="editedPessoa.nome" label="Nome"
+            :rules="[v => !!v || 'Nome é obrigatório']"
+            :error-messages="errors.nome ? [errors.nome] : []"></v-text-field>
+          <v-text-field v-model="editedPessoa.nomeSocial" label="Nome Social"
+            :rules="[v => !!v || 'Nome Social é obrigatório']"
+            :error-messages="errors.nomeSocial ? [errors.nomeSocial] : []"></v-text-field>
+          <v-text-field v-model="editedPessoa.cpf" label="CPF"
+            :rules="[v => !!v || 'CPF é obrigatório']"
+            :error-messages="errors.cpf ? [errors.cpf] : []"></v-text-field>
+          <v-text-field v-model="editedPessoa.nomeMae" label="Nome da Mãe"
+            :rules="[v => !!v || 'Nome da Mãe é obrigatório']"
+            :error-messages="errors.nomeMae ? [errors.nomeMae] : []"></v-text-field>
+          <v-text-field v-model="editedPessoa.nomePai" label="Nome do Pai"
+            :rules="[v => !!v || 'Nome do Pai é obrigatório']"
+            :error-messages="errors.nomePai ? [errors.nomePai] : []"></v-text-field>
+          <v-text-field v-model="editedPessoa.telefone" label="Telefone"
+            :rules="[v => !!v || 'Telefone é obrigatório']"
+            :error-messages="errors.telefone ? [errors.telefone] : []"></v-text-field>
+          <v-text-field v-model="editedPessoa.email" label="Email"
+            :rules="[v => !!v || 'Email é obrigatório']"
+            :error-messages="errors.email ? [errors.email] : []"></v-text-field>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -97,7 +125,7 @@ export default {
       },
       editedPessoa: {},
       selectedPessoa: null,
-      errors: {} // Adicionado para mensagens de erro
+      errors: {}
     };
   },
   computed: {
@@ -114,93 +142,116 @@ export default {
     }
   },
   methods: {
-  async fetchPessoas() {
-    const token = localStorage.getItem("authToken");
-    try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_API_BASE_URL}/api/pessoas`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      this.pessoas = response.data;
-    } catch (error) {
-      console.error("Erro ao buscar pessoas:", error);
-    }
-  },
-  async createPessoa() {
-    const token = localStorage.getItem("authToken");
-    try {
-      console.log('Criando pessoa com dados:', this.newPessoa); 
-      await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/api/pessoas`,
-        this.newPessoa,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      this.fetchPessoas();
-      this.createDialog = false;
-      this.newPessoa = { nome: "", nomeSocial: "", cpf: "", nomeMae: "", nomePai: "", telefone: "", email: "" };
-      this.errors = {}; 
-    } catch (error) {
-      console.error("Erro ao criar pessoa:", error);
-
-      console.log(error.response);
-
-      if (error.response && error.response.status === 422) {
-        this.errors = error.response.data.errors;
+    async fetchPessoas() {
+      const token = localStorage.getItem("authToken");
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_BASE_URL}/api/pessoas`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        this.pessoas = response.data;
+      } catch (error) {
+        console.error("Erro ao buscar pessoas:", error);
       }
-    }
-  },
-  async updatePessoa() {
-    const token = localStorage.getItem("authToken");
-    try {
-      console.log('Atualizando pessoa com dados:', this.editedPessoa); // Verificação dos dados
-      await axios.put(
-        `${import.meta.env.VITE_API_BASE_URL}/api/pessoas/${this.editedPessoa.id}`,
-        this.editedPessoa,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      this.fetchPessoas();
-      this.editDialog = false;
-      this.errors = {}; 
-    } catch (error) {
-      console.error("Erro ao editar pessoa:", error);
-      if (error.response && error.response.status === 422) {
-        this.errors = error.response.data.errors; 
+    },
+    async createPessoa() {
+      const token = localStorage.getItem("authToken");
+      if (Object.values(this.newPessoa).some(value => !value)) {
+        this.errors = {
+          nome: !this.newPessoa.nome ? 'Nome é obrigatório' : '',
+          nomeSocial: !this.newPessoa.nomeSocial ? 'Nome Social é obrigatório' : '',
+          cpf: !this.newPessoa.cpf ? 'CPF é obrigatório' : '',
+          nomeMae: !this.newPessoa.nomeMae ? 'Nome da Mãe é obrigatório' : '',
+          nomePai: !this.newPessoa.nomePai ? 'Nome do Pai é obrigatório' : '',
+          telefone: !this.newPessoa.telefone ? 'Telefone é obrigatório' : '',
+          email: !this.newPessoa.email ? 'Email é obrigatório' : '',
+        };
+        return;
       }
-    }
-  },
-  async deletePessoa(pessoaId) {
-    const token = localStorage.getItem("authToken");
-    try {
-      await axios.delete(
-        `${import.meta.env.VITE_API_BASE_URL}/api/pessoas/${pessoaId}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
+
+      try {
+        await axios.post(
+          `${import.meta.env.VITE_API_BASE_URL}/api/pessoas`,
+          this.newPessoa,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        this.fetchPessoas();
+        this.createDialog = false;
+        this.newPessoa = { nome: "", nomeSocial: "", cpf: "", nomeMae: "", nomePai: "", telefone: "", email: "" };
+        this.errors = {};
+      } catch (error) {
+        console.error("Erro ao criar pessoa:", error.response ? error.response.data : error.message);
+        if (error.response && error.response.status === 422) {
+          this.errors = error.response.data.errors;
+        } else {
+          this.errors = { geral: 'Ocorreu um erro inesperado. Tente novamente.' };
         }
-      );
-      this.fetchPessoas();
-    } catch (error) {
-      console.error("Erro ao deletar pessoa:", error);
-    }
+      }
+    },
+    async updatePessoa() {
+      const token = localStorage.getItem("authToken");
+      if (Object.values(this.editedPessoa).some(value => !value)) {
+        this.errors = {
+          nome: !this.editedPessoa.nome ? 'Nome é obrigatório' : '',
+          nomeSocial: !this.editedPessoa.nomeSocial ? 'Nome Social é obrigatório' : '',
+          cpf: !this.editedPessoa.cpf ? 'CPF é obrigatório' : '',
+          nomeMae: !this.editedPessoa.nomeMae ? 'Nome da Mãe é obrigatório' : '',
+          nomePai: !this.editedPessoa.nomePai ? 'Nome do Pai é obrigatório' : '',
+          telefone: !this.editedPessoa.telefone ? 'Telefone é obrigatório' : '',
+          email: !this.editedPessoa.email ? 'Email é obrigatório' : '',
+        };
+        return;
+      }
+
+      try {
+        await axios.put(
+          `${import.meta.env.VITE_API_BASE_URL}/api/pessoas/${this.editedPessoa.id}`,
+          this.editedPessoa,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        this.fetchPessoas();
+        this.editDialog = false;
+        this.errors = {};
+      } catch (error) {
+        console.error("Erro ao editar pessoa:", error);
+        if (error.response && error.response.status === 422) {
+          this.errors = error.response.data.errors;
+        }
+      }
+    },
+    async deletePessoa(pessoaId) {
+      const token = localStorage.getItem("authToken");
+      try {
+        await axios.delete(
+          `${import.meta.env.VITE_API_BASE_URL}/api/pessoas/${pessoaId}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        this.fetchPessoas();
+      } catch (error) {
+        console.error("Erro ao deletar pessoa:", error);
+      }
+    },
+    openCreateDialog() {
+      this.createDialog = true;
+    },
+    openEditDialog(pessoa) {
+      this.editedPessoa = { ...pessoa };
+      this.editDialog = true;
+      this.errors = {};
+    },
+    openAddressModal(pessoa) {
+      this.selectedPessoa = pessoa;
+      this.$refs.enderecosModal.open();
+    },
   },
-  openCreateDialog() {
-    this.createDialog = true;
-  },
-  openEditDialog(pessoa) {
-    this.editedPessoa = { ...pessoa };
-    this.editDialog = true;
-    this.errors = {}; 
-  },
-  openAddressModal(pessoa) {
-    this.selectedPessoa = pessoa;
-    this.$refs.enderecosModal.open();
-  },
-},
 
   mounted() {
     this.fetchPessoas();
