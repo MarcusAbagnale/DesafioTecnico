@@ -39,6 +39,7 @@ docker exec -it web php artisan db:seed
 # http://localhost:8080/
 
 ```
+```
 git clone https://github.com/MarcusAbagnale/DesafioTecnico.git
 cd DesafioTecnico
 bash
