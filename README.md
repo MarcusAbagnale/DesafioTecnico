@@ -9,7 +9,7 @@
 
 ```bash
 # 1. Clonar o Repositório
-git clone <URL_DO_REPOSITORIO>
+git clone https://github.com/MarcusAbagnale/DesafioTecnico.git
 
 # 2. Entrar na Pasta do Projeto
 cd <NOME_DA_PASTA>
