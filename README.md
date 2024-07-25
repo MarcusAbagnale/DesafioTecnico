@@ -6,7 +6,7 @@ Git instalado
 ###Instruções de Configuração
 1. Clonar o Repositório
 
-```git clone <URL_DO_REPOSITORIO>
+```git clone <URL_DO_REPOSITORIO>```
 2. Entrar na Pasta do Projeto
 
 ```
