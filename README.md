@@ -1,6 +1,11 @@
 # Desafio Técnico
 Projeto de Cadastro de Pessoas com Laravel e Vue
 
+Requisitos:
+Docker instalado, configurado e sendo executado.
+Git instalado
+
+
 Clonar a imagem em sua máquina.
 
 Entrar na pasta.
