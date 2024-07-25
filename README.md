@@ -12,7 +12,7 @@
 git clone https://github.com/MarcusAbagnale/DesafioTecnico.git
 
 # 2. Entrar na Pasta do Projeto
-cd <NOME_DA_PASTA>
+cd DesafioTecnico
 
 # 3. Configurar os Arquivos .env
 # - Backend: Configure o arquivo `.env` localizado na pasta `app` com as informações adequadas para o backend.
