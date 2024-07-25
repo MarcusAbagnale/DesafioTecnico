@@ -5,18 +5,19 @@
         <span class="headline">{{ editing ? 'Editar Endereço' : 'Cadastrar Endereço' }}</span>
       </v-card-title>
       <v-card-text>
-        <v-form ref="form">
+        <v-form ref="form" v-model="formValid">
           <v-row dense>
             <v-col cols="12" md="6" class="pa-2">
-              <v-text-field v-model="currentEndereco.cep" label="CEP" dense @input="fetchCepData" :rules="[cepRule]"
-                v-mask="'#####-###'"></v-text-field>
+              <v-text-field v-model="currentEndereco.cep" label="CEP" dense @input="fetchCepData"
+                :rules="[cepRule]" v-mask="'#####-###'"></v-text-field>
             </v-col>
             <v-col cols="12" md="6" class="pa-2">
               <v-text-field v-model="currentEndereco.logradouro" label="Logradouro" required dense
                 readonly></v-text-field>
             </v-col>
             <v-col cols="12" md="6" class="pa-2">
-              <v-text-field v-model="currentEndereco.numero" label="Número" required dense></v-text-field>
+              <v-text-field v-model="currentEndereco.numero" label="Número" required dense
+                :rules="[requiredRule]"></v-text-field>
             </v-col>
             <v-col cols="12" md="6" class="pa-2">
               <v-text-field v-model="currentEndereco.complemento" label="Complemento" dense></v-text-field>
@@ -25,13 +26,16 @@
               <v-text-field v-model="currentEndereco.bairro" label="Bairro" dense readonly></v-text-field>
             </v-col>
             <v-col cols="12" md="6" class="pa-2">
-              <v-text-field v-model="currentEndereco.cidade" label="Cidade" required dense readonly></v-text-field>
+              <v-text-field v-model="currentEndereco.cidade" label="Cidade" required dense readonly
+                :rules="[requiredRule]"></v-text-field>
             </v-col>
             <v-col cols="12" md="6" class="pa-2">
-              <v-text-field v-model="currentEndereco.estado" label="Estado" required dense readonly></v-text-field>
+              <v-text-field v-model="currentEndereco.estado" label="Estado" required dense readonly
+                :rules="[requiredRule]"></v-text-field>
             </v-col>
             <v-col cols="12" md="6" class="pa-2">
-              <v-select v-model="currentEndereco.tipo" :items="tipos" label="Tipo" required dense></v-select>
+              <v-select v-model="currentEndereco.tipo" :items="tipos" label="Tipo" required dense
+                :rules="[requiredRule]"></v-select>
             </v-col>
           </v-row>
         </v-form>
@@ -47,12 +51,11 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn text @click="dialog = false">Fechar</v-btn>
-        <v-btn color="primary" @click="saveEndereco">{{ editing ? 'Salvar' : 'Criar' }}</v-btn>
+        <v-btn color="primary" @click="saveEndereco" :disabled="!formValid">{{ editing ? 'Salvar' : 'Criar' }}</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
-
 
 <script>
 import axios from 'axios';
@@ -90,6 +93,7 @@ export default {
         { title: 'Ações', value: 'actions', sortable: false },
       ],
       editing: false,
+      formValid: false,
     };
   },
   watch: {
@@ -181,6 +185,9 @@ export default {
   computed: {
     cepRule() {
       return v => !!v && v.length === 9 || 'CEP deve ser no formato 00000-000';
+    },
+    requiredRule() {
+      return v => !!v || 'Campo obrigatório';
     },
   },
 };
