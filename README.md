@@ -46,7 +46,7 @@ docker compose build
 docker compose up -d
 docker exec -it web composer install
 docker exec -it web php artisan migrate
-docker exec -it web php artisan db:seed
+docker exec -it web php artisan db:seed```
 
 ```
 #Diagrama de Relacionamento do Banco de Dados
