@@ -25,13 +25,16 @@ docker compose build
 # 5. Iniciar os Containers Docker
 docker compose up -d
 
-# 6. Executar as Migrações do Banco de Dados
+# 6. Instalar as dependências
+docker exec -it web composer install
+
+# 7. Executar as Migrações do Banco de Dados
 docker exec -it web php artisan migrate
 
-# 7. Popular o Banco de Dados
+# 8. Popular o Banco de Dados
 docker exec -it web php artisan db:seed
 
-# 8. Acessar a Aplicação
+# 9. Acessar a Aplicação
 # Abra seu navegador e acesse o endereço:
 # http://localhost:8080/
 
