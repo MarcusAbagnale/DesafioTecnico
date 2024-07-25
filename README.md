@@ -1,41 +1,35 @@
-###Projeto de Cadastro de Pessoas com Laravel e Vue
-Requisitos
-Docker instalado e configurado
-Git instalado
+# Projeto de Cadastro de Pessoas com Laravel e Vue
 
-###Instruções de Configuração
-1. Clonar o Repositório
+## Requisitos
 
-```git clone <URL_DO_REPOSITORIO>```
-2. Entrar na Pasta do Projeto
+- Docker instalado e configurado
+- Git instalado
 
-```
+## Instruções de Configuração
+
+```bash
+# 1. Clonar o Repositório
+git clone <URL_DO_REPOSITORIO>
+
+# 2. Entrar na Pasta do Projeto
 cd <NOME_DA_PASTA>
-3. **Configurar os Arquivos .env**
-Backend: Configure o arquivo .env localizado na pasta app com as informações adequadas para o backend.
-Frontend: Configure o arquivo .env localizado na pasta front com as informações adequadas para o frontend.
-4. Construir os Containers Docker
-Na pasta raiz do projeto, execute o seguinte comando para construir os containers Docker:
 
-```docker compose build
-5. Iniciar os Containers Docker
-Ainda na pasta raiz, execute o seguinte comando para iniciar os containers em segundo plano:
+# 3. Configurar os Arquivos .env
+# - Backend: Configure o arquivo `.env` localizado na pasta `app` com as informações adequadas para o backend.
+# - Frontend: Configure o arquivo `.env` localizado na pasta `front` com as informações adequadas para o frontend.
 
-```docker compose up -d
-6. Executar as Migrações do Banco de Dados
-Após os containers estarem em execução, execute o comando abaixo para realizar as migrações do banco de dados:
+# 4. Construir os Containers Docker
+docker compose build
 
-```docker exec -it web php artisan migrate
-7. Popular o Banco de Dados
-Execute o comando abaixo para popular o banco de dados com dados de teste:
+# 5. Iniciar os Containers Docker
+docker compose up -d
 
-```docker exec -it web php artisan db:seed
-8. Acessar a Aplicação
-Abra seu navegador e acesse o endereço:
+# 6. Executar as Migrações do Banco de Dados
+docker exec -it web php artisan migrate
 
-arduino
-Copiar código
-http://localhost:8080/
+# 7. Popular o Banco de Dados
+docker exec -it web php artisan db:seed
 
-###Considerações Finais
-Com esses passos, você terá o ambiente configurado e a aplicação pronta para uso. 
+# 8. Acessar a Aplicação
+# Abra seu navegador e acesse o endereço:
+# http://localhost:8080/
