@@ -33,3 +33,9 @@ docker exec -it web php artisan db:seed
 # 8. Acessar a Aplicação
 # Abra seu navegador e acesse o endereço:
 # http://localhost:8080/
+
+
+#Diagrama de Relacionamento do Banco de Dados
+
+![image](https://github.com/user-attachments/assets/77993bf6-2bd5-4724-9fc3-de309333af20)
+
