@@ -11,7 +11,7 @@ Git instalado
 
 ```
 cd <NOME_DA_PASTA>
-3. Configurar os Arquivos .env
+3. **Configurar os Arquivos .env**
 Backend: Configure o arquivo .env localizado na pasta app com as informações adequadas para o backend.
 Frontend: Configure o arquivo .env localizado na pasta front com as informações adequadas para o frontend.
 4. Construir os Containers Docker
