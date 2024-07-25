@@ -51,6 +51,7 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn text @click="dialog = false">Fechar</v-btn>
+        <v-btn @click="resetForm" color="secondary">{{ editing ? 'Cancelar' : 'Novo Endereço' }}</v-btn>
         <v-btn color="primary" @click="saveEndereco" :disabled="!formValid">{{ editing ? 'Salvar' : 'Criar' }}</v-btn>
       </v-card-actions>
     </v-card>
@@ -180,6 +181,21 @@ export default {
       } else {
         this.cepFetched = false;
       }
+    },
+    resetForm() {
+      this.currentEndereco = {
+        id: null,
+        logradouro: '',
+        numero: '',
+        complemento: '',
+        bairro: '',
+        cidade: '',
+        estado: '',
+        cep: '',
+        tipo: '',
+      };
+      this.editing = false;
+      this.dialog = true;
     },
   },
   computed: {
