@@ -30,7 +30,11 @@ class EnderecosController extends Controller
             'idPessoa' => 'required|exists:pessoas,id',
             'tipo' => 'required|string',
             'cep' => 'required|string',
+            'logradouro' => 'required|string',
             'numero' => 'required|string',
+            'complemento' => 'required|string',
+            'bairro' => 'required|string',
+            'estado' => 'required|string',
             'cidade' => 'required|string',
         ]);
 
@@ -58,9 +62,14 @@ class EnderecosController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'idPessoa' => 'required|exists:pessoas,id',
             'tipo' => 'required|string',
             'cep' => 'required|string',
+            'logradouro' => 'required|string',
             'numero' => 'required|string',
+            'complemento' => 'required|string',
+            'bairro' => 'required|string',
+            'estado' => 'required|string',
             'cidade' => 'required|string',
         ]);
 

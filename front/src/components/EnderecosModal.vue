@@ -8,10 +8,12 @@
         <v-form ref="form">
           <v-row dense>
             <v-col cols="12" md="6" class="pa-2">
-              <v-text-field v-model="currentEndereco.cep" label="CEP" dense @input="fetchCepData" :rules="[cepRule]" v-mask="'#####-###'"></v-text-field>
+              <v-text-field v-model="currentEndereco.cep" label="CEP" dense @input="fetchCepData" :rules="[cepRule]"
+                v-mask="'#####-###'"></v-text-field>
             </v-col>
             <v-col cols="12" md="6" class="pa-2">
-              <v-text-field v-model="currentEndereco.logradouro" label="Logradouro" required dense :readonly></v-text-field>
+              <v-text-field v-model="currentEndereco.logradouro" label="Logradouro" required dense
+                readonly></v-text-field>
             </v-col>
             <v-col cols="12" md="6" class="pa-2">
               <v-text-field v-model="currentEndereco.numero" label="Número" required dense></v-text-field>
@@ -20,14 +22,14 @@
               <v-text-field v-model="currentEndereco.complemento" label="Complemento" dense></v-text-field>
             </v-col>
             <v-col cols="12" md="6" class="pa-2">
-              <v-text-field v-model="currentEndereco.bairro" label="Bairro" dense :readonly></v-text-field>
+              <v-text-field v-model="currentEndereco.bairro" label="Bairro" dense readonly></v-text-field>
             </v-col>
             <v-col cols="12" md="6" class="pa-2">
-              <v-text-field v-model="currentEndereco.cidade" label="Cidade" required dense :readonly></v-text-field>
+              <v-text-field v-model="currentEndereco.cidade" label="Cidade" required dense readonly></v-text-field>
             </v-col>
             <v-col cols="12" md="6" class="pa-2">
-              <v-text-field v-model="currentEndereco.estado" label="Estado" required dense :readonly></v-text-field>
-            </v-col>            
+              <v-text-field v-model="currentEndereco.estado" label="Estado" required dense readonly></v-text-field>
+            </v-col>
             <v-col cols="12" md="6" class="pa-2">
               <v-select v-model="currentEndereco.tipo" :items="tipos" label="Tipo" required dense></v-select>
             </v-col>
@@ -36,11 +38,11 @@
 
         <v-data-table :items="enderecos" :headers="headers" item-value="id">
           <template v-slot:item.actions="{ item }">
-            <v-btn @click="startEdit(item)" class="mr-2">Editar</v-btn>
-            <v-btn @click="deleteEndereco(item.id)" color="red" class="mr-2">Deletar</v-btn>
+            <v-btn @click="startEdit(item)" class="mr-2">&#128393;</v-btn>
+            <v-btn @click="deleteEndereco(item.id)" color="red" class="mr-2">DEL</v-btn>
           </template>
         </v-data-table>
-        
+
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -50,6 +52,7 @@
     </v-card>
   </v-dialog>
 </template>
+
 
 <script>
 import axios from 'axios';
@@ -74,7 +77,7 @@ export default {
         tipo: '',
       },
       cepFetched: false,
-      tipos: ['Residencial', 'Comercial'], 
+      tipos: ['Residencial', 'Comercial'],
       headers: [
         { title: 'Logradouro', value: 'logradouro' },
         { title: 'Número', value: 'numero' },
@@ -124,7 +127,7 @@ export default {
         } else {
           await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/enderecos`, {
             ...this.currentEndereco,
-            pessoa_id: this.pessoa.id,
+            idPessoa: this.pessoa.id,
           }, {
             headers: { 'Authorization': `Bearer ${token}` },
           });

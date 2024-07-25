@@ -7,9 +7,9 @@
 
     <v-data-table :items="filteredPessoas" :headers="headers" item-key="id">
       <template v-slot:item.actions="{ item }">
-        <v-btn @click="openEditDialog(item)" class="mr-2">Editar</v-btn>
-        <v-btn @click="deletePessoa(item.id)" color="red" class="mr-2">Deletar</v-btn>
-        <v-btn @click="openAddressModal(item)" class="mr-2">Ver Endereços</v-btn>
+        <v-btn @click="openEditDialog(item)"  class="mt-2 mr-2">&#128393;</v-btn>
+        <v-btn @click="deletePessoa(item.id)" color="red" class="mt-2 mr-2">DEL</v-btn>
+        <v-btn @click="openAddressModal(item)" color="blue" class="mt-2 mb-2">Ver Endereços</v-btn>
       </template>
     </v-data-table>
 
@@ -131,7 +131,7 @@ export default {
   async createPessoa() {
     const token = localStorage.getItem("authToken");
     try {
-      console.log('Criando pessoa com dados:', this.newPessoa); // Verificação dos dados
+      console.log('Criando pessoa com dados:', this.newPessoa); 
       await axios.post(
         `${import.meta.env.VITE_API_BASE_URL}/api/pessoas`,
         this.newPessoa,
