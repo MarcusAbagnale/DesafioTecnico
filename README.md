@@ -19,6 +19,7 @@ cd DesafioTecnico
 # - Frontend: Configure o arquivo `.env` localizado na pasta `front` com as informações adequadas para o frontend.
 
 # 4. Construir os Containers Docker
+**Execute os comandos em terminal Bash**
 docker compose build
 
 # 5. Iniciar os Containers Docker
